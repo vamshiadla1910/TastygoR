@@ -36,7 +36,13 @@ function Checkout() {
   const modalRef = useRef(null);
 
   useEffect(() => {
-    if (cartItems.length === 0 && !showModal) {
+    const orderSubmitted = sessionStorage.getItem("orderSubmitted");
+
+    if (
+      cartItems.length === 0 &&
+      !showModal &&
+      !orderSubmitted
+    ) {
       navigate("/menu", { replace: true });
     }
   }, [cartItems, navigate, showModal]);
@@ -491,28 +497,7 @@ function Checkout() {
             </button>
 
             <div className="modal-content" style={{ textAlign: "center" }}>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  marginBottom: 10,
-                }}
-              >
-                <svg width="72" height="72" viewBox="0 0 52 52" aria-hidden>
-                  <circle cx="26" cy="26" r="25" fill="#E6F9EA" />
-                  <path
-                    d="M14 27l7 7 16-16"
-                    stroke="#2E9A4A"
-                    strokeWidth="4"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    fill="none"
-                    strokeDasharray="48"
-                    strokeDashoffset="48"
-                    style={{ animation: "draw 420ms ease forwards 120ms" }}
-                  />
-                </svg>
-              </div>
+              
 
               <h2 style={{ margin: "6px 0" }}>Order Placed Successfully!</h2>
               <p style={{ margin: "8px 0 16px", color: "#666" }}>
@@ -561,7 +546,7 @@ function Checkout() {
                     navigate("/my-orders");
                   }}
                   style={{
-                    background: "#2E9A4A",
+                    background: "#ff8a3d",
                     color: "#fff",
                     padding: "10px 14px",
                     borderRadius: 8,

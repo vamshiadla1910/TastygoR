@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./SignUp.css";
+import "../Signup/Signup.css";
 
 import { useDispatch } from "react-redux";
 import { signup } from "../../Slices/authenticationSlice";
